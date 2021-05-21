@@ -1,0 +1,109 @@
+{
+    "name": "mezzio/mezzio-skeleton",
+    "description": "Zend expressive skeleton. Begin developing PSR-15 middleware applications in seconds!",
+    "type": "project",
+    "homepage": "https://github.com/mezzio/mezzio-skeleton",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "skeleton",
+        "middleware",
+        "psr",
+        "psr-7",
+        "psr-11",
+        "psr-15",
+        "zf",
+        "zendframework",
+        "mezzio"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "component-whitelist": [
+                "mezzio/mezzio",
+                "mezzio/mezzio-helpers",
+                "mezzio/mezzio-router",
+                "laminas/laminas-httphandlerrunner",
+                "mezzio/mezzio-fastroute",
+                "mezzio/mezzio-laminasviewrenderer"
+            ]
+        }
+    },
+    "support": {
+        "issues": "https://github.com/mezzio/mezzio-skeleton/issues",
+        "source": "https://github.com/mezzio/mezzio-skeleton",
+        "rss": "https://github.com/mezzio/mezzio-skeleton/releases.atom",
+        "slack": "https://zendframework-slack.herokuapp.com",
+        "forum": "https://discourse.zendframework.com/c/questions/expressive"
+    },
+    "require": {
+        "php": "^7.1",
+        "aws/aws-sdk-php": "^3.128",
+        "dasprid/container-interop-doctrine": "^1.1",
+        "elasticsearch/elasticsearch": "~6.0",
+        "filp/whoops": "^2.5",
+        "guzzlehttp/guzzle": "^6.3",
+        "roave/security-advisories": "dev-master",
+        "laminas/laminas-component-installer": "^2.1.1",
+        "laminas/laminas-config-aggregator": "^1.0",
+        "laminas/laminas-diactoros": "^1.7.1",
+        "mezzio/mezzio": "^3.0.1",
+        "mezzio/mezzio-fastroute": "^3.0",
+        "mezzio/mezzio-helpers": "^5.0",
+        "mezzio/mezzio-laminasviewrenderer": "^2.0",
+        "laminas/laminas-servicemanager": "^3.3",
+        "laminas/laminas-stdlib": "^3.1",
+        "laminas/laminas-dependency-plugin": "^2.1",
+      "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0.1",
+        "squizlabs/php_codesniffer": "^2.9.1",
+        "mezzio/mezzio-tooling": "^1.0",
+        "laminas/laminas-development-mode": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/App/src/",
+            "PenalSearch\\": "src/PenalSearch/src/",
+            "ElasticSearch\\": "src/ElasticSearch/src/",
+            "BuhoLegalSearch\\": "src/BuhoLegalSearch/src/",
+            "BitAwsS3\\": "src/BitAwsS3/src/",
+            "CoreSearcher\\": "src/CoreSearcher/src/",
+            "CjfSearch\\": "src/CjfSearch/src/",
+            "BgcNewsWrapper\\": "src/BgcNewsWrapper/src/",
+            "InternationalSearch\\": "src/InternationalSearch/src/",
+            "LiveSearch\\": "src/LiveSearch/src/",
+            "LaboralSearch\\": "src/LaboralSearch/src/",
+            "Logger\\": "src/Logger/src/",
+            "BdiSearch\\": "src/BdiSearch/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AppTest\\": "test/AppTest/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@development-enable"
+        ],
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
+        "expressive": "expressive --ansi",
+        "check": [
+            "@cs-check",
+            "@test",
+            "@analyze"
+        ],
+        "analyze": "phpstan analyze -l max -c ./phpstan.installer.neon ./src ./config",
+        "clear-config-cache": "php bin/clear-config-cache.php",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "serve": "php -S 0.0.0.0:8086 -t public/",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    }
+}
